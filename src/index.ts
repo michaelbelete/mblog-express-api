@@ -1,11 +1,15 @@
-require('dotenv').config()
-const express = require("express");
-const app = express()
+import prisma from "./utils/prisma";
+import app from "./utils/app";
 
-app.get("/", (request,response) => {
-    response.send("hello, world")
-})
-app.use("/static", express.static('public'))
-app.listen(process.env.PORT || 3000, () => {
-    console.log(`blog running on port ${process.env.PORT || 3000}`)
-} )
+import userRouter from './routers/users'
+import postRouter from "./routers/posts";
+
+const port = process.env.PORT || 3000;
+
+app.use('/users', userRouter)
+app.use('/posts', userRouter)
+
+app.listen(port, () => {
+  console.log(`
+🚀 Server ready at: http://localhost:${port}`);
+});
