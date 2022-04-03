@@ -14,6 +14,7 @@ model User {
   id        Int       @id @default(autoincrement())
   email     String    @unique
   username  String?
+  password  String
   createdAt DateTime  @default(now())
   UpdateAt  DateTime? @updatedAt
   posts     Post[]
@@ -22,17 +23,18 @@ model User {
 }
 
 model Post {
-  id         Int       @id @default(autoincrement())
-  createdAt  DateTime  @default(now())
-  updatedAt  DateTime  @updatedAt
-  title      String
-  content    String?
-  published  Boolean   @default(false)
-  viewCount  Int       @default(0)
-  author     User?     @relation(fields: [authorId], references: [id])
-  authorId   Int?
-  category   Category? @relation(fields: [categoryId], references: [id])
-  categoryId Int?
+  id            Int       @id @default(autoincrement())
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  title         String
+  content       String?
+  headerPicture String?
+  published     Boolean   @default(false)
+  viewCount     Int       @default(0)
+  author        User?     @relation(fields: [authorId], references: [id])
+  authorId      Int?
+  category      Category? @relation(fields: [categoryId], references: [id])
+  categoryId    Int?
 }
 
 model Category {
