@@ -54,12 +54,13 @@ postRouter.get("/:id", async (req, res) => {
 
 //create a new post
 postRouter.post("/", async (req, res) => {
-  const { title, content, authorEmail } = req.body;
+  const { title, content, authorEmail, categoryName } = req.body;
   const result = await prisma.post.create({
     data: {
       title,
       content,
       author: { connect: { email: authorEmail } },
+      category: { connect: { name: categoryName } },
     },
   });
   res.json(result);
