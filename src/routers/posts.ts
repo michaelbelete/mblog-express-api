@@ -21,7 +21,7 @@ postRouter.get("/", async (req, res) => {
     where: {
       ...queries,
     },
-    include: { author: true },
+    include: { author: true, category: true },
     take: Number(take) || undefined,
     skip: Number(skip) || undefined,
     orderBy: {
