@@ -29,7 +29,6 @@ model Post {
   title         String
   content       String?
   headerPicture String?
-  published     Boolean   @default(false)
   viewCount     Int       @default(0)
   author        User?     @relation(fields: [authorId], references: [id])
   authorId      Int?
