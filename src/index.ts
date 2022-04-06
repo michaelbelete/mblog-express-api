@@ -1,11 +1,10 @@
-import prisma from "./utils/prisma";
 import app from "./utils/app";
 
 import userRouter from "./routers/users";
 import postRouter from "./routers/posts";
 import categoryRouter from "./routers/category";
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8000;
 
 app.use("/api/users", userRouter);
 app.use("/api/posts", postRouter);
